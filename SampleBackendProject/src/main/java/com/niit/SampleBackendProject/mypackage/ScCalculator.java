@@ -2,41 +2,43 @@ package com.niit.SampleBackendProject.mypackage;
 
 import java.util.Scanner;
 
-public class ScCalculator extends Calculator
-{
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-	public void power()
-	{
-		result = (int)Math.pow(first,second);
-	}
-	
-	public void root()
-	{
-		//result = (int)Math.pow(first,(1/2));
-		result = (int)Math.sqrt(first);
+public class ScCalculator extends Calculator {
+	private static final Logger LOG = LogManager.getLogger(ScCalculator.class);
+
+	public void power() {
+		LOG.info("ScCalculator.power() called");
+		result = (int) Math.pow(first, second);
 	}
 
-	public void sine()
-	{
+	public void root() {
+		LOG.info("ScCalculator.root() called");
+		// result = (int)Math.pow(first,(1/2));
+		result = (int) Math.sqrt(first);
+	}
+
+	public void sine() {
+		LOG.info("ScCalculator.sine() called");
 		result = Math.sin(first);
 	}
 
-	public void cosine()
-	{
+	public void cosine() {
+		LOG.info("ScCalculator.cosine() called");
 		result = Math.cos(first);
 	}
 
-	public void tangent()
-	{
+	public void tangent() {
+		LOG.info("ScCalculator.tangent() called");
 		result = Math.tan(first);
 	}
 
-	public void menu()
-	{
+	public void menu() {
+		LOG.info("ScCalculator.menu() called");
 		int ch = 0;
 		Scanner sc = new Scanner(System.in);
-		while(ch !=10)
-		{
+		while (ch != 10) {
 			System.out.println("1. Add");
 			System.out.println("2. sub");
 			System.out.println("3. div");
@@ -50,48 +52,47 @@ public class ScCalculator extends Calculator
 
 			ch = sc.nextInt();
 
-			if( ch>=7 && ch<=9)
+			if (ch >= 7 && ch <= 9)
 				acceptOne();
-			else if(ch !=  10 && ch<10)
+			else if (ch != 10 && ch < 10)
 				acceptTwo();
 
-			switch(ch)
-			{
-				case 1 : 
-					add();
-					break;
-				case 2 :
-					sub();
-					break;
-				case 3:
-					div();
-					break;
-				case 4:
-					mul();
-					break;
-				case 5:
-					power();
-					break;
-				case 6:
-					root();
-					break;
-				case 7:
-					tangent();
-					break;
-				case 8:
-					sine();
-					break;
-				case 9:
-					cosine();
-					break;
-				case 10:
-					System.out.println("Thank You");
-					break;
-				default :
-					System.out.println("Inavlid input");
+			switch (ch) {
+			case 1:
+				add();
+				break;
+			case 2:
+				sub();
+				break;
+			case 3:
+				div();
+				break;
+			case 4:
+				mul();
+				break;
+			case 5:
+				power();
+				break;
+			case 6:
+				root();
+				break;
+			case 7:
+				tangent();
+				break;
+			case 8:
+				sine();
+				break;
+			case 9:
+				cosine();
+				break;
+			case 10:
+				System.out.println("Thank You");
+				break;
+			default:
+				System.out.println("Inavlid input");
 			}
 
-			if(ch != 10 && ch < 10)
+			if (ch != 10 && ch < 10)
 				display();
 		}
 	}
